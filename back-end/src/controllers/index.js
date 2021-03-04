@@ -1,7 +1,9 @@
-const { getAllArticles } = require('./article');
-const { getAllCategories } = require('./category');
+const { getAllArticles, getArticleById } = require('./article');
+const { getAllCategories, getCategoryById } = require('./category');
 
 module.exports = {
     getAllArticles,
-    getAllCategories
+    getAllCategories,
+    getCategoryById,
+    getArticleById
 };

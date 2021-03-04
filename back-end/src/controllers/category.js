@@ -13,8 +13,19 @@ const getAllCategories = asyncHandler( async(req, res) => {
 
 
     res.json(categories);
+});
+
+const getCategoryById = asyncHandler(async(req, res) => {
+    const id = req.params.id;
+
+    const category = await Category.findOne({where:{id}});
+
+    if(!category) throw new Error ('Category not found');
+    
+    res.json(category);
 })
 
 module.exports = {
-    getAllCategories
+    getAllCategories,
+    getCategoryById
 };

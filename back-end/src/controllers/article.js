@@ -11,10 +11,22 @@ const getAllArticles = asyncHandler( async (req, res) => {
 
     });
 
-    if(!articles){
-        throw new Error('not articles found');
-    }
+    if(!articles) throw new Error('Not articles found');
+    
     res.json(articles);
+});
+
+const getArticleById = asyncHandler( async (req, res) => {
+    const id = req.params.id;
+
+    const article = await Article.findOne({where:{id},
+    include: {
+        model: Category
+    }});
+
+    if(!article) throw new Error('Article not found');
+
+    res.json(article)
 })
 
-module.exports = {getAllArticles};
+module.exports = {getAllArticles, getArticleById};
