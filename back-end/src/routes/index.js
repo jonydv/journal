@@ -1,10 +1,11 @@
 const express = require('express');
+const router = express.Router();
 
 const article = require('./article');
 
 const category = require('./category');
 
-const router = express.Router();
+
 
 router.use('/articles', article);
 router.use('/categories', category);
